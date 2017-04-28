@@ -13,8 +13,8 @@ public class Main {
         CtMethod m1 = licenseClazz.getDeclaredMethod("expiryDate");
         CtMethod m2 = licenseClazz.getDeclaredMethod("type");
 
-        m1.insertBefore("{if(true) return 4070880000000L;}");
-        m2.insertBefore("{if(true) return \"platinum\";}");
+        m1.insertBefore("{if(true) this.expiryDate = 4070880000000L; return this;}");
+        m2.insertBefore("{if(true) this.type = \"platinum\"; return this;}");
 
         licenseClazz.writeFile();
     }
